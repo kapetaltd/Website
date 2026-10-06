@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+/*
+  Kapeta Labs design tokens.
+  Layout concept: a quiet 12-column editorial grid on off-white, where the
+  product portfolio is the one place with weight and contrast.
+*/
+@theme {
+  --color-paper: #fafaf9;     /* page background */
+  --color-panel: #f1f1ef;     /* recessed surfaces */
+  --color-ink: #0b0b0c;       /* primary text, black surfaces */
+  --color-ink-soft: #1c1c1e;  /* raised black surfaces */
+  --color-graphite: #55555a;  /* secondary text */
+  --color-mist: #8d8d92;      /* tertiary text, labels */
+  --color-line: #e3e3e0;      /* hairlines on paper */
+  --color-line-dark: #2a2a2d; /* hairlines on ink */
+
+  --font-sans: "Geist", "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    font-feature-settings: "ss01", "cv11";
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  ::selection {
+    background: var(--color-ink);
+    color: var(--color-paper);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  .on-ink :focus-visible,
+  .on-ink:focus-visible {
+    outline-color: var(--color-paper);
+  }
+}
+
+@layer components {
+  .container-k {
+    @apply mx-auto w-full max-w-[1280px] px-5 sm:px-8 lg:px-12;
+  }
+  .eyebrow {
+    @apply font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-mist;
+  }
+  .arrow {
+    display: inline-block;
+    transition: transform 300ms var(--ease-out-quint);
+  }
+  .group:hover .arrow,
+  .group:focus-visible .arrow,
+  a:hover > .arrow {
+    transform: translateX(4px);
+  }
+}
+
+/* Load-in for the hero only; everything else is visible at rest. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rise {
+  animation: rise 900ms var(--ease-out-quint) both;
+}
+
+/* Scroll reveal: only applied by JS to elements that start below the fold. */
+.reveal-pending {
+  opacity: 0;
+  transform: translateY(18px);
+}
+.reveal-done {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 800ms var(--ease-out-quint),
+    transform 800ms var(--ease-out-quint);
+}
+
+/* Hero module grid */
+@keyframes pulse-cell {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 1; }
+}
+.cell-pulse {
+  animation: pulse-cell 3.2s ease-in-out infinite;
+}
+
+/* Hajjaam card: slow diagonal drift, quicker on hover */
+@keyframes stripe-drift {
+  to { transform: translateX(-56px); }
+}
+.stripes {
+  animation: stripe-drift 9s linear infinite;
+}
+.group:hover .stripes {
+  animation-duration: 3.5s;
+}
+
+/* Cut Out: marching selection */
+@keyframes march {
+  to { stroke-dashoffset: -16; }
+}
+.marching {
+  animation: march 1.2s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal-pending {
+    opacity: 1;
+    transform: none;
+  }
+}
