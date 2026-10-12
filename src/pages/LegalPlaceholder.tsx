@@ -1,6 +1,6 @@
-import { useEffect } from "react";
 import { site } from "../content/site";
 import { linkHandler } from "../lib/router";
+import { useTitle } from "./useTitle";
 
 interface Props {
   title: string;
@@ -10,13 +10,7 @@ interface Props {
  * PLACEHOLDER — replace with the final legal text once it has been prepared.
  */
 export function LegalPlaceholder({ title }: Props) {
-  useEffect(() => {
-    const previous = document.title;
-    document.title = `${title} — Kapeta Labs`;
-    return () => {
-      document.title = previous;
-    };
-  }, [title]);
+  useTitle(`${title} — Kapeta Labs`);
 
   return (
     <section aria-labelledby="legal-title" className="py-20 sm:py-28">

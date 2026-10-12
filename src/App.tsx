@@ -4,6 +4,8 @@ import { useRoute } from "./lib/router";
 import { useReveal } from "./lib/useReveal";
 import { Home } from "./pages/Home";
 import { LegalPlaceholder } from "./pages/LegalPlaceholder";
+import { Shedlock } from "./pages/Shedlock";
+import { ShedlockPrivacy } from "./pages/ShedlockPrivacy";
 
 export default function App() {
   const route = useRoute();
@@ -17,6 +19,10 @@ export default function App() {
           <LegalPlaceholder title="Privacy Policy" />
         ) : route === "/terms" ? (
           <LegalPlaceholder title="Terms of Use" />
+        ) : route === "/shedlock" ? (
+          <Shedlock />
+        ) : route === "/shedlock/privacy" ? (
+          <ShedlockPrivacy />
         ) : (
           <Home />
         )}

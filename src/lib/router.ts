@@ -1,13 +1,13 @@
 import { useEffect, useState, type MouseEvent } from "react";
 
 /**
- * Minimal client-side router for the three pages this site needs.
+ * Minimal client-side router for the few pages this site needs.
  * Avoids a routing dependency. Static hosts must rewrite unknown paths to
  * /index.html (see vercel.json / public/_redirects).
  */
-export type Route = "/" | "/privacy" | "/terms";
+export type Route = "/" | "/privacy" | "/terms" | "/shedlock" | "/shedlock/privacy";
 
-const routes: Route[] = ["/", "/privacy", "/terms"];
+const routes: Route[] = ["/", "/privacy", "/terms", "/shedlock", "/shedlock/privacy"];
 
 function parse(pathname: string): Route {
   const clean = pathname.replace(/\/+$/, "") || "/";

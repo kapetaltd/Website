@@ -18,6 +18,11 @@ npm run preview  # serve the production build
 - `src/assets/products/` holds product logos.
 - `src/components/Wordmark.tsx` holds the text wordmark; swap in the final logo asset there.
 - `src/pages/LegalPlaceholder.tsx` renders `/privacy` and `/terms` until the legal text is ready.
+- `/shedlock` and `/shedlock/privacy` are the Shedlock game page and its privacy policy
+  (`src/pages/Shedlock*.tsx`, details in `src/content/shedlock.ts`). The privacy policy URL is
+  used by Google Play and AdMob, so keep it stable.
+- `public/app-ads.txt` authorises Kapeta's AdMob account to sell ads in Kapeta's apps. It must
+  stay at `https://kapetalabs.com/app-ads.txt`.
 
 ## Deployment
 
