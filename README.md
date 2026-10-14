@@ -21,6 +21,8 @@ npm run preview  # serve the production build
 - `/shedlock` and `/shedlock/privacy` are the Shedlock game page and its privacy policy
   (`src/pages/Shedlock*.tsx`, details in `src/content/shedlock.ts`). The privacy policy URL is
   used by Google Play and AdMob, so keep it stable.
+- `/stackecho/privacy` is the Stack Echo privacy policy (`src/pages/StackEchoPrivacy.tsx`, details in
+  `src/content/stackecho.ts`). It is used by Google Play, so keep the URL stable.
 - `public/app-ads.txt` authorises Kapeta's AdMob account to sell ads in Kapeta's apps. It must
   stay at `https://kapetalabs.com/app-ads.txt`.
 

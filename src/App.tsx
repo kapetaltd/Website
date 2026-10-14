@@ -6,6 +6,7 @@ import { Home } from "./pages/Home";
 import { LegalPlaceholder } from "./pages/LegalPlaceholder";
 import { Shedlock } from "./pages/Shedlock";
 import { ShedlockPrivacy } from "./pages/ShedlockPrivacy";
+import { StackEchoPrivacy } from "./pages/StackEchoPrivacy";
 
 export default function App() {
   const route = useRoute();
@@ -23,6 +24,8 @@ export default function App() {
           <Shedlock />
         ) : route === "/shedlock/privacy" ? (
           <ShedlockPrivacy />
+        ) : route === "/stackecho/privacy" ? (
+          <StackEchoPrivacy />
         ) : (
           <Home />
         )}

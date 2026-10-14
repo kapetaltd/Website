@@ -5,9 +5,9 @@ import { useEffect, useState, type MouseEvent } from "react";
  * Avoids a routing dependency. Static hosts must rewrite unknown paths to
  * /index.html (see vercel.json / public/_redirects).
  */
-export type Route = "/" | "/privacy" | "/terms" | "/shedlock" | "/shedlock/privacy";
+export type Route = "/" | "/privacy" | "/terms" | "/shedlock" | "/shedlock/privacy" | "/stackecho/privacy";
 
-const routes: Route[] = ["/", "/privacy", "/terms", "/shedlock", "/shedlock/privacy"];
+const routes: Route[] = ["/", "/privacy", "/terms", "/shedlock", "/shedlock/privacy", "/stackecho/privacy"];
 
 function parse(pathname: string): Route {
   const clean = pathname.replace(/\/+$/, "") || "/";
